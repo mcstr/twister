@@ -1,0 +1,22 @@
+<%= form_with(model: twist, local: true) do |form| %>
+  <% if twist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(twist.errors.count, "error") %> prohibited this twist from being saved:</h2>
+
+      <ul>
+        <% twist.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :twist %>
+    <%= form.text_area :twist %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
