@@ -1,22 +1,11 @@
-<%= form_with(model: twist, local: true) do |form| %>
-  <% if twist.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(twist.errors.count, "error") %> prohibited this twist from being saved:</h2>
-
-      <ul>
-        <% twist.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<div class="content">
+  <%= simple_form_for(@twist) do |f| %>
+    <%= f.error_notification %>
+    <div class="field">
+      <div class="control">
+        <%= f.input :twist, label: "Twist about it", input_html: {class: "textarea"}, wrapper: false, label_html: {class: "label"}, placeholder: "Compose a new twist..." %>
+      </div>
     </div>
+    <%= f.button :submit, class: "button is-info"%>
   <% end %>
-
-  <div class="field">
-    <%= form.label :twist %>
-    <%= form.text_area :twist %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

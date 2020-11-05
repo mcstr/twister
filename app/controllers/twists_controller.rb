@@ -4,7 +4,8 @@ class TwistsController < ApplicationController
   # GET /twists
   # GET /twists.json
   def index
-    @twists = Twist.all
+    @twists = Twist.all.order("created_at DESC")
+    @twist = Twist.new
   end
 
   # GET /twists/1
