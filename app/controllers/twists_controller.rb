@@ -29,7 +29,7 @@ class TwistsController < ApplicationController
 
     respond_to do |format|
       if @twist.save
-        format.html { redirect_to @twist, notice: 'Twist was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Twist was successfully created.' }
         format.json { render :show, status: :created, location: @twist }
       else
         format.html { render :new }
