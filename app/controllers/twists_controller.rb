@@ -1,5 +1,6 @@
 class TwistsController < ApplicationController
   before_action :set_twist, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /twists
   # GET /twists.json
@@ -15,7 +16,7 @@ class TwistsController < ApplicationController
 
   # GET /twists/new
   def new
-    @twist = Twist.new
+    @twist = current_user.twists.build
   end
 
   # GET /twists/1/edit
@@ -25,7 +26,7 @@ class TwistsController < ApplicationController
   # POST /twists
   # POST /twists.json
   def create
-    @twist = Twist.new(twist_params)
+    @twist = current_user.twists.build(twist_params)
 
     respond_to do |format|
       if @twist.save
